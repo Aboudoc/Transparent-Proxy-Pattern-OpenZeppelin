@@ -208,14 +208,26 @@ We can do the same using the plugin from OpenZeppelin
 ```js
 async function main() {
     const boxProxyAdmin = await ethers.getContract("BoxProxyAdmin")
-    const transparentProxy = await ethers.getContract("Box_proxy")
+    const transparentProxy = await ethers.getContract("Box_Proxy")
+
+    // We get our version V1
+    const proxyBoxV1 = await ethers.getContractAt("Box", transparentProxy.address)
+    const versionV1 = await proxyBoxV1.version()
+    console.log(versionV1)
+
+    //We upgrade
     const boxV2 = await ethers.getContract("BoxV2")
     const upgradeTx = await boxProxyAdmin.upgrade(transparentProxy.address, boxV2.address)
     await upgradeTx.wait(1)
+
+    // We check the version at the same address, checking if upgrade succeeded
+    const proxyBoxV2 = await ethers.getContractAt("BoxV2", transparentProxy.address)
+    const versionV2 = await proxyBoxV2.version()
+    console.log(versionV2)
 }
 ```
 
-### Upgrade to V2 on hardhat node:
+## Upgrade to V2 on hardhat node:
 
 ```sh
 yarn hardhat node
