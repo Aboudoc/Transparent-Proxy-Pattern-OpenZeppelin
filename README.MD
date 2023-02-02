@@ -227,7 +227,7 @@ async function main() {
 }
 ```
 
-## Upgrade to V2 on hardhat node:
+### Upgrade to V2 on hardhat node:
 
 ```sh
 yarn hardhat node
@@ -235,7 +235,7 @@ yarn hardhat node
 
 All contracts are deployed: `BoxProxyAdmin`, `Box_Implementation`, `Box_proxy` and the `BoxV2`implementation
 
-Make a new terminal: 
+Make a new terminal to run `upgrade-box.js`: 
 
 ```sh
 yarn hardhat run scripts/upgrade-box.js --network localhost
@@ -246,6 +246,10 @@ BigNumber { _hex: '0x01', _isBigNumber: true }
 BigNumber { _hex: '0x02', _isBigNumber: true }
 ✨  Done in 2.48s.
 ```
+
+## Upgrade to V2 using OpenZppelin upgrade's plugin:
+
+First we deploy the proxy in `./hardhatPlugin/deploy.js` by calling `upgrades.deployProxy()` then we call upgrades.prepareUpgrade()` from `prepareUpgrade.js` and the `upgrades.upgradeProxy()` from `upgrade.js`
 
 Learn how to work with different type of proxy (coming soon...) 1:05:36:05
 
