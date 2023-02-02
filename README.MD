@@ -249,9 +249,9 @@ BigNumber { _hex: '0x02', _isBigNumber: true }
 
 ## Upgrade to V2 using OpenZppelin upgrade's plugin:
 
-First we deploy the proxy in `./hardhatPlugin/deploy.js` by calling `upgrades.deployProxy()` then we call upgrades.prepareUpgrade()` from `prepareUpgrade.js` and the `upgrades.upgradeProxy()` from `upgrade.js`
+First we deploy the proxy in `./hardhatPlugin/deploy.js` by calling `upgrades.deployProxy()` then we call `upgrades.prepareUpgrade()` from `prepareUpgrade.js` and the `upgrades.upgradeProxy()` from `upgrade.js`
 
-Learn how to work with different type of proxy (coming soon...) 1:05:36:05
+To learn more, follow this tutorial: [OpenZeppelin Upgrades: Step by Step Tutorial for Hardhat](https://forum.openzeppelin.com/t/openzeppelin-upgrades-step-by-step-tutorial-for-hardhat/3580)
 
 ## hardhat-deploy in a nutshell
 
