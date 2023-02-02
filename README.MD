@@ -136,7 +136,7 @@ There are mainly three ways to deploy upgradable contracts:
 
 We'll be using hardhat-deploy's built-in proxies
 
-We're gonna deploy our Box contract behind an[Open Zeppelin's Transparent proxy](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) that is owned by a Box proxy admin contract.
+We're gonna deploy our Box contract behind an [Open Zeppelin's Transparent proxy](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/proxy/transparent/TransparentUpgradeableProxy.sol) that is owned by a Box proxy admin contract.
 
 To deploy using the [Upgradable Transparent Proxy from OpenZeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/proxy/transparent/TransparentUpgradeableProxy.sol):
 
@@ -156,9 +156,9 @@ const box = await deploy("Box", {
 })
 ```
 
-On contracts folder, create a new folder called proxy, create a new file called BoxProxyAdmin.sol
+Inside contracts folder, create a new folder called proxy, create a new file called `BoxProxyAdmin.sol`
 
-For this contract, we gonna use `ProxyAdmin` [contract from OpenZeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/proxy/transparent/ProxyAdmin.sol)
+For this contract, we gonna use `ProxyAdmin` contract from [OpenZeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/proxy/transparent/ProxyAdmin.sol)
 
 ```js
 import "@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol"
@@ -166,7 +166,7 @@ import "@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol"
 
 It has the following functions: `getProxyAdmin`, `changeProxyAdmin`, `upgrade`, `upgradeAndCall`, for dealing with upgradable contracts
 
-To have our `BoxProxyAdmin` work with the hardhat-deploy plugin, our `constructor` needs to take in address of the owner as an input parameter (leave it blank).
+To make our `BoxProxyAdmin` work with the hardhat-deploy plugin, our `constructor` needs to take in address of the owner as an input parameter (leave it blank).
 
 Then add the `ProxyAdmin()` (leave it blank):
 
@@ -198,6 +198,42 @@ First, we deploy our `BoxProxyAdmin` (our admin contract). Then we deploy `Box_i
 Finally, it deployed `BoxProxy`, which will point to the logic of `Box`
 
 ## Deployment BoxV2
+
+Write a basic deployment script using hardhat-deploy, then create a script to do the upgrade: `upgrade-box.js`
+
+We do the manual way to see the functions called to do the upgrade process (upgrade). 
+
+We can do the same using the plugin from OpenZeppelin 
+
+```js
+async function main() {
+    const boxProxyAdmin = await ethers.getContract("BoxProxyAdmin")
+    const transparentProxy = await ethers.getContract("Box_proxy")
+    const boxV2 = await ethers.getContract("BoxV2")
+    const upgradeTx = await boxProxyAdmin.upgrade(transparentProxy.address, boxV2.address)
+    await upgradeTx.wait(1)
+}
+```
+
+### Upgrade to V2 on hardhat node:
+
+```sh
+yarn hardhat node
+```
+
+All contracts are deployed: `BoxProxyAdmin`, `Box_Implementation`, `Box_proxy` and the `BoxV2`implementation
+
+Make a new terminal: 
+
+```sh
+yarn hardhat run scripts/upgrade-box.js --network localhost
+```
+
+```sh
+BigNumber { _hex: '0x01', _isBigNumber: true }
+BigNumber { _hex: '0x02', _isBigNumber: true }
+✨  Done in 2.48s.
+```
 
 Learn how to work with different type of proxy (coming soon...) 1:05:36:05
 

@@ -5,7 +5,7 @@ require("solidity-coverage")
 require("hardhat-gas-reporter")
 require("hardhat-contract-sizer")
 require("dotenv").config()
-// require("@openzeppelin/hardhat-upgrades");
+require("@openzeppelin/hardhat-upgrades")
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
