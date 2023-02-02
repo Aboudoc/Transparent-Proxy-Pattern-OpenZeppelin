@@ -98,7 +98,7 @@ To get a local copy up and running follow these simple example steps.
     OpenZeppelin contracts:
 
     ```sh
-    npm add --dev @openzeppelin/contracts
+    yarn add --dev @openzeppelin/contracts
     ```
 
     run:
