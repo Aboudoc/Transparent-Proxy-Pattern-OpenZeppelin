@@ -294,10 +294,8 @@ Learn more about [hardhat deployment plugin](https://github.com/wighawag/hardhat
 
 ## Roadmap
 
--   [ ]
--   [ ]
--   [-]
--   [ ]
+-   [ ] unit test `boxUpgrades.test.js`
+
 
 See the [open issues](https://github.com/Aboudoc/Ethernaut-OpenZeppelin/issues) for a full list of proposed features (and known issues).
 
