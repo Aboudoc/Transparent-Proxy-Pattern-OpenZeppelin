@@ -280,7 +280,7 @@ This is a huge benefit for testing since you are not required to replicate the d
 
 You can even group deploy scripts in different sub folder and ensure they are executed in their logical order.
 
-Furthermore hardhat-deploy can also support a multi-chain settings like L1, L2 with multiple deploy folder specific to each network.
+Furthermore `hardhat-deploy` can also support a multi-chain settings like L1, L2 with multiple deploy folder specific to each network.
 
 **All of this can also be bundled in a npm package so user of hardhat-deploy can reuse your deployment procedure and get started integrating with your project locally.**
 
@@ -290,7 +290,7 @@ There is a tutorial covering the basics here : https://github.com/wighawag/tutor
 
 Learn more about [hardhat deployment plugin](https://github.com/wighawag/hardhat-deploy)
 
-Check this [repo](https://github.com/Aboudoc/Transparent-Upgradable-Proxy-assembly) for a deep overview of assembly used to write to any storage slot and to return data from fallback
+Check this [repo](https://github.com/Aboudoc/Transparent-Upgradable-Proxy-assembly) for a deep overview of `assembly` used to write to any storage slot and to return data from fallback
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
