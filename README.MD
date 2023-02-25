@@ -288,6 +288,8 @@ There is a tutorial covering the basics here : https://github.com/wighawag/tutor
 
 Learn more about [hardhat deployment plugin](https://github.com/wighawag/hardhat-deploy)
 
+Check this [repo](https://github.com/Aboudoc/Transparent-Upgradable-Proxy-assembly) for a deep overview of assembly used to write to any storage slot and to return data from fallback
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
